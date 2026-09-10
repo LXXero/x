@@ -225,11 +225,20 @@ func (s *Screen) SaveCursor() {
 
 // RestoreCursor restores the cursor.
 func (s *Screen) RestoreCursor() {
-	old := s.cur.Position
+	old := s.cur
 	s.cur = s.saved
 
-	if s.cb.CursorPosition != nil && (old.X != s.cur.X || old.Y != s.cur.Y) {
-		s.cb.CursorPosition(old, s.cur.Position)
+	if s.cb.CursorPosition != nil && (old.Position.X != s.cur.X || old.Position.Y != s.cur.Y) {
+		s.cb.CursorPosition(old.Position, s.cur.Position)
+	}
+	// DECRC restores the saved cursor's visibility too. Without firing
+	// the callback here, a host that did save → hide (DECTCEM ?25l) →
+	// restore → show (?25h) leaves the embedder's visibility mirror
+	// stuck hidden: the restore silently reset Hidden, so the later
+	// ?25h sees "no change" and never re-shows. (Powerlevel10k's
+	// instant prompt does exactly this.)
+	if s.cb.CursorVisibility != nil && old.Hidden != s.cur.Hidden {
+		s.cb.CursorVisibility(!s.cur.Hidden)
 	}
 }
 
