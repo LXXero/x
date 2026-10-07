@@ -20,7 +20,7 @@ func TestLoadDefaults(t *testing.T) {
 		filetypes []string
 	}{
 		{"gopls", "gopls", []string{"go", "gomod", "gowork", "gotmpl"}},
-		{"clangd", "clangd", []string{"c", "cpp", "objc", "objcpp", "cuda"}},
+		{"clangd", "clangd", []string{"c", "c.doxygen", "cpp", "cpp.doxygen", "objc", "objcpp", "cuda"}},
 		{"rust_analyzer", "rust-analyzer", []string{"rust"}},
 		// nvim-lspconfig dropped ts_ls in favor of vtsls upstream
 		// (see also: ts_ls remnants in pkg/config/overrides.go that
