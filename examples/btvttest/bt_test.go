@@ -90,7 +90,9 @@ func TestBubbleTeaInlineProgram(t *testing.T) {
 	defer tt.Close()
 
 	cmd := exec.Command(os.Args[0], fmt.Sprintf("-test.run=^%s$", t.Name()))
-	cmd.Env = append(os.Environ(), "GO_TEST_HELPER_PROCESS=1")
+	// Set TERM so the program's color profile matches the emulated terminal
+	// and the snapshots, whatever TERM the test runner has (or lacks).
+	cmd.Env = append(os.Environ(), "TERM=xterm-256color", "GO_TEST_HELPER_PROCESS=1")
 	if err := tt.Start(cmd); err != nil {
 		t.Fatalf("failed to start command: %v", err)
 	}
