@@ -68,7 +68,7 @@
   "dafny": {"args": ["server"], "command": "dafny", "filetypes": ["dfy", "dafny"], "root_markers": [".git"]},
   "dagger": {"command": "cuelsp", "filetypes": ["cue"], "root_markers": ["cue.mod", ".git"]},
   "dartls": {"args": ["language-server", "--protocol=lsp"], "command": "dart", "filetypes": ["dart"], "init_options": {"closingLabels": true, "flutterOutline": true, "onlyAnalyzeProjectsWithOpenFiles": true, "outline": true, "suggestFromUnimportedLibraries": true}, "root_markers": ["pubspec.yaml"], "settings": {"dart": {"completeFunctionCalls": true, "showTodos": true}}},
-  "dbt": {"args": ["lsp"], "command": "dbt", "filetypes": ["sql", "dbt"]},
+  "dbt": {"args": ["lsp"], "command": "dbt", "filetypes": ["sql", "dbt"], "root_markers": ["dbt_project.yml"]},
   "dcmls": {"args": ["start-server", "--client=neovim"], "command": "dcm", "filetypes": ["dart"], "root_markers": ["pubspec.yaml"]},
   "debputy": {"args": ["lsp", "server"], "command": "debputy", "filetypes": ["debcontrol", "debcopyright", "debchangelog", "autopkgtest", "make", "yaml"], "root_markers": ["debian"]},
   "denols": {"args": ["lsp"], "command": "deno", "filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"], "settings": {"deno": {"enable": true, "suggest": {"imports": {"hosts": {"https://deno.land": true}}}}}},
